@@ -16,7 +16,7 @@ def user_helper(user) -> dict:
 
 @router.post("/users")
 def create_user(create_request: CreateUser):
-    result = Users.insert_one(create_request.dict())
+    result = Users.insert_one(create_request.model_dump())
     return {"id": str(result.inserted_id)}
 
 

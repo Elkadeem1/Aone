@@ -20,7 +20,7 @@ def book_helper(book) -> dict:
 
 @router.post("/books")
 def create_book(create_request: CreateBook):
-    book_data = create_request.dict()
+    book_data = create_request.model_dump()
     book_data["status"] = "available"
     book_data["borrowed_by"] = None
     result = Books.insert_one(book_data)
